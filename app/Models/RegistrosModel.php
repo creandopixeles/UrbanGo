@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RegistroModel extends Model
+class RegistrosModel extends Model
 {
     protected $table = 'registro'; // Cambia esto al nombre de tu tabla
     protected $primaryKey = 'id'; // Cambia esto si tu clave primaria tiene otro nombre
@@ -17,7 +17,7 @@ class RegistroModel extends Model
         'sexo',
         'correo',
         'documento',
-        'id_estado_validacion',
+        'estado_validacion',
         'password'
     ]; // Lista de campos que se pueden insertar/actualizar
     protected $returnType = 'object';
@@ -50,5 +50,26 @@ class RegistroModel extends Model
     public function updatePorId($id, $data)
     {
         return $this->update($id, $data);
+    }
+    /**
+     * Obtener todos los registros de la tabla, ordenados por la fecha de creación más reciente.
+     *
+     * @return object Lista de registros.
+     */
+    public function obtenerTodosRegistros()
+    {
+        return $this->orderBy('created_at', 'DESC')->findAll(); // Ordena por created_at en orden descendente
+    }
+
+
+    /**
+     * Obtener un registro por su ID.
+     *
+     * @param int $id ID del registro a obtener.
+     * @return object|null El registro encontrado o null si no existe.
+     */
+    public function traerPorId(int $id)
+    {
+        return $this->find($id); // Busca el registro por su ID
     }
 }

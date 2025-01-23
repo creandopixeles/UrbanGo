@@ -2,14 +2,36 @@
 
 namespace App\Controllers;
 
-use App\Models\RegistrosModel;
-use App\Models\TipoBeneficiariosModel;
+// use App\Models\RegistrosModel;
+// use App\Models\TipoBeneficiariosModel;
 
 use CodeIgniter\Email\Email;
 
 
-class RegistrosController extends BaseController
+class PapeletasController extends BaseController
 {
+
+    public function nueva()
+    {
+        $data = [
+            'menu' => view('layouts/menu'),
+            'head' => view('layouts/head'),
+            'nav' => view('layouts/nav'),
+
+            'footer' => view('layouts/footer'),
+            'js' => view('layouts/js')
+        ];
+        return view('papeletas/nueva', $data);
+    }
+
+
+    public function generar()
+    {
+        $dataPapeleta = $this->request->getPost();
+        var_dump($dataPapeleta);
+    }
+
+
 
     public function detalle($id)
     {

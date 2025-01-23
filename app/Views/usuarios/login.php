@@ -17,7 +17,7 @@
     class="light-style customizer-hide"
     dir="ltr"
     data-theme="theme-default"
-    data-assets-path="<?= base_url('public/assets/"
+    data-public/assets-path="<?= base_url('public/assets/"
     data-template="vertical-menu-template-free') ?>">
 
 <head>
@@ -26,7 +26,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Register Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
 
@@ -68,7 +68,7 @@
     <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner">
-                <!-- Register Card -->
+                <!-- Register -->
                 <div class="card">
                     <div class="card-body">
                         <!-- Logo -->
@@ -127,89 +127,69 @@
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Los beneficios comienzan aqui 🚀</h4>
-                        <p class="mb-4">Registra tu informacion</p>
+                        <h4 class="mb-2">Bienvenido! 👋</h4>
+                        <p class="mb-4">Ingresa al sistema</p>
 
                         <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
                             <div class="mb-3">
-                                <label for="username" class="form-label">Nombre</label>
+                                <label for="email" class="form-label">Usuario</label>
                                 <input
                                     type="text"
-                                    class="form-control"
-                                    id="nombre"
-                                    name="nombre"
-                                    placeholder="Ingresa tu nombre"
+                                    class="form-control form-control-sm"
+                                    id="usuario"
+                                    name="usuario"
+                                    placeholder="Ingresa tu usuario"
                                     autofocus />
+                                <div id="error-message-user" class="invalid-feedback">
+                                    Debe ingresar un correo electrónico válido.
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Apellido Paterno</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="nombre"
-                                    name="nombre"
-                                    placeholder="Ingresa tu nombre"
-                                    autofocus />
-                            </div>
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Apellido Materno</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="nombre"
-                                    name="nombre"
-                                    placeholder="Ingresa tu nombre"
-                                    autofocus />
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
-                            </div>
+
                             <div class="mb-3 form-password-toggle">
-                                <label class="form-label" for="password">Password</label>
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label" for="password">Contraseña</label>
+                                    <!-- <a href="auth-forgot-password-basic.html">
+                                        <small>¿Olvidaste tu contraseña?</small>
+                                    </a> -->
+                                </div>
+
                                 <div class="input-group input-group-merge">
                                     <input
                                         type="password"
                                         id="password"
-                                        class="form-control"
+                                        class="form-control form-control-sm"
                                         name="password"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                        aria-describedby="password" />
+                                        aria-describedby="password"
+                                        autocomplete="new-password"
+                                        aria-autocomplete="list" />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                    <div id="error-message-password" class="invalid-feedback">
+                                        Debe ingresar una contraseña valida.
+                                    </div>
                                 </div>
                             </div>
-
                             <div class="mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                                    <label class="form-check-label" for="terms-conditions">
-                                        I agree to
-                                        <a href="javascript:void(0);">privacy policy & terms</a>
-                                    </label>
+                                    <input class="form-check-input" type="checkbox" id="remember-me" />
+                                    <label class="form-check-label" for="remember-me"> Recordarme </label>
                                 </div>
                             </div>
-                            <button class="btn btn-primary d-grid w-100">Sign up</button>
+                            <div class="mb-3">
+                                <button class="btn btn-primary d-grid w-100" type="submit" id="iniciar_session">Inicar Sesión</button>
+                            </div>
                         </form>
 
-                        <p class="text-center">
-                            <span>Already have an account?</span>
-                            <a href="auth-login-basic.html">
-                                <span>Sign in instead</span>
-                            </a>
-                        </p>
                     </div>
                 </div>
-                <!-- Register Card -->
+                <!-- /Register -->
             </div>
         </div>
     </div>
 
     <!-- / Content -->
-
-
-
     <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
+    <!-- build:js public/assets/vendor/js/core.js -->
     <script src="<?= base_url('public/assets/vendor/libs/jquery/jquery.js') ?>"></script>
     <script src="<?= base_url('public/assets/vendor/libs/popper/popper.js') ?>"></script>
     <script src="<?= base_url('public/assets/vendor/js/bootstrap.js') ?>"></script>
@@ -227,6 +207,139 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-confirm@3.3.4/js/jquery-confirm.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Agregar validación al evento blur
+            $('#usuario, #password').on('blur', function() {
+
+                // Validar el campo de usuario
+                if ($(this).attr('id') === 'usuario') {
+                    var usuario = $(this).val().trim();
+                    if (usuario === '') { // Ejemplo: longitud mínima de 3 caracteres
+                        $(this).removeClass('is-valid').addClass('is-invalid');
+                        $('#error-message-user').text('Debe ingresar un usuario');
+                    } else {
+                        $(this).removeClass('is-invalid').addClass('is-valid');
+                        $('#error-message-user').text('');
+                    }
+                }
+
+                // Validar el campo de contraseña
+                if ($(this).attr('id') === 'password') {
+                    var password = $(this).val().trim();
+
+                    if (password === '') {
+                        $(this).removeClass('is-valid').addClass('is-invalid');
+                        $('#error-message-password').text('Debe ingresar una contraseña.');
+                    } else {
+                        $(this).removeClass('is-invalid').addClass('is-valid');
+                        $('#error-message-password').text('');
+                    }
+                }
+            });
+
+            // Remover clases is-valid e is-invalid al cambiar el contenido del campo de entrada
+            $('#correo, #password').on('input', function() {
+                $(this).removeClass('is-valid is-invalid');
+                $('#error-message').text('');
+            });
+
+            $('#iniciar_session').click(function(e) {
+                $("#iniciar_session").html(`
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="spinner-border spinner-border-sm text-light" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <label> Ingresando al sistema</label>
+                </div>
+                `)
+                $('#error-message').text('').hide();
+
+                e.preventDefault(); // Evitar el envío del formulario por defecto
+
+                var usuario = $('#usuario').val().trim();
+                var password = $('#password').val().trim();
+
+                // Expresión regular para validar correo electrónico
+
+                if (usuario === '') { // Ejemplo: longitud mínima de 3 caracteres
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    $('#error-message-user').text('Debe ingresar un usuario');
+                    return false;
+
+                } else {
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    $('#error-message-user').text('');
+                }
+                if (password === '') {
+                    $(this).removeClass('is-valid').addClass('is-invalid');
+                    $('#error-message-password').text('Debe ingresar una contraseña.');
+                    return false;
+
+                } else {
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                    $('#error-message-password').text('');
+                }
+
+
+
+                // Enviar datos por AJAX
+                $.ajax({
+                    url: 'usuarios/validar_acceso',
+                    method: 'POST',
+                    data: {
+                        usuario: usuario,
+                        password: password
+                    },
+                    dataType: 'json', // Esperamos una respuesta JSON del servidor
+                    success: function(response) {
+                        // Manejar la respuesta del servidor
+                        console.log(response.error_code);
+                        // Si hay un error, mostrar mensaje de error
+                        if (response.code == "is_not_ok") {
+                            $('#error_login').text(response.error_message).show();
+                            $('#error_login').fadeOut(5000);
+                            $("#iniciar_sesion").html(`Inicar sesión`)
+
+
+                        } else if (response.code == "is_ok") {
+                            // Esperar 5 segundos antes de redirigir
+                            $("#iniciar_sesion").html(`<i class="fa-solid fa-circle-check"></i> Usuario validado correctamente`);
+                            setTimeout(function() {
+                                // Realizar la redirección después de 5 segundos
+                                window.location.href = 'usuarios/lista';
+                            }, 2000); // 5000 milisegundos = 5 segundos
+
+                            // Si no hay error, redirigir o realizar otra acción
+                            //window.location.href = 'inicio';
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Manejar errores de la solicitud AJAX
+                        console.error(error);
+                    }
+                });
+            });
+
+            $('#correo, #password').keydown(function(e) {
+                if (e.key === "Enter") { // Verifica si la tecla presionada es Enter
+                    e.preventDefault(); // Evita que el formulario se envíe al presionar Enter
+                    $('#iniciar_sesion').click(); // Dispara el evento de clic del botón "Iniciar sesión"
+                }
+            });
+
+        });
+
+
+        // Remover clases is-valid e is-invalid al cambiar el contenido del campo de entrada
+        $('#correo, #password').on('input', function() {
+            $(this).removeClass('is-valid is-invalid');
+            $('#error-message').text('').hide();
+        });
+    </script>
+
 </body>
 
 </html>

@@ -11,7 +11,7 @@ class TipoBeneficiariosModel extends Model
     protected $allowedFields = [
         'tipo',
     ]; // Campos permitidos para operaciones de inserción y actualización
-    protected $useTimestamps = true; // Utilizar campos de timestamp automáticos
+    protected $useTimestamps = false; // Utilizar campos de timestamp automáticos
     protected $returnType = 'object';
 
     /**
@@ -30,9 +30,9 @@ class TipoBeneficiariosModel extends Model
      * 
      * @return array Lista de usuarios.
      */
-    public function obtenerTodosRoles()
+    public function obtenerTodosTipos()
     {
-        // Realizando el join con la tabla roles usando el campo id_rol
+        // Realizando el join con la tabla tipos usando el campo id_rol
         return $this->findAll();
     }
 
@@ -42,7 +42,7 @@ class TipoBeneficiariosModel extends Model
      * @param array $where Condición para filtrar usuarios.
      * @return array|null Lista de usuarios o null si no hay coincidencias.
      */
-    public function obtenerRolesPorWhere(array $where)
+    public function obtenerTiposPorWhere(array $where)
     {
         return $this->where($where)->findAll();
     }
@@ -54,8 +54,19 @@ class TipoBeneficiariosModel extends Model
      * @param array $data Datos a actualizar.
      * @return bool Retorna true si se actualizaron registros, false en caso contrario.
      */
-    public function editarRolesPorWhere(array $where, array $data)
+    public function editarTiposPorWhere(array $where, array $data)
     {
         return $this->where($where)->set($data)->update();
+    }
+
+    /**
+     * Buscar un tipo de beneficiario por su ID.
+     *
+     * @param int $id ID del tipo de beneficiario.
+     * @return object|null Tipo de beneficiario encontrado o null si no existe.
+     */
+    public function buscarPorId(int $id)
+    {
+        return $this->find($id); // Busca un registro por ID
     }
 }

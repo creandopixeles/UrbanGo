@@ -68,4 +68,12 @@ class UsuariosModel extends Model
     {
         return $this->where($where)->set($data)->update();
     }
+
+    public function verificar_usuario($usuario)
+    {
+
+        // Buscar al usuario en la base de datos por su nombre de usuario
+        return $this->where('usuario', $usuario) // 'usuario' debe coincidir con el nombre del campo en tu tabla
+            ->first(); // Retorna el primer registro encontrado
+    }
 }

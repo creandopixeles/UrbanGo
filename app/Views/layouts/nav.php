@@ -1,3 +1,7 @@
+<?php
+$session = session()->get('urbango_session'); // Acceder directamente a la variable de sesión
+
+?>
 <nav
     class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
     id="layout-navbar">
@@ -13,13 +17,9 @@
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- Place this tag where you want the button to render. -->
             <li class="nav-item lh-1 me-3">
-                <a
-                    class="github-button"
-                    href="https://github.com/themeselection/sneat-html-admin-template-free"
-                    data-icon="octicon-star"
-                    data-size="large"
-                    data-show-count="true"
-                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Marco Cardona</a>
+                <button type="button" class="btn btn-outline-secondary" disabled><?= $session['nombre']; ?></button>
+
+
             </li>
 
             <!-- User -->
@@ -39,8 +39,8 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">Marco Antonio Cardona</span>
-                                    <small class="text-muted">Administrador</small>
+                                    <span class="fw-semibold d-block"><?= $session['nombre']; ?></span>
+                                    <small class="text-muted"><?= $session['nombre']; ?></small>
                                 </div>
                             </div>
                         </a>

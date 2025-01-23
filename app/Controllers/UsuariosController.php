@@ -13,10 +13,75 @@ use App\Models\AdministradoresModel;
 
 class UsuariosController extends BaseController
 {
+    // Especificamos que este controlador usa la sesión de 'usuario'
+    protected $sessionType = 'usuario';
+
     public function login()
     {
-        return view('login'); // 'login' es el nombre de la vista
+        return view('usuarios/login'); // 'login' es el nombre de la vista
     }
+
+    public function validar_acceso()
+    {
+        $usuario = $this->request->getPost('usuario');
+        $password = $this->request->getPost('password');
+
+        $usuariosModel = new UsuariosModel();
+        $usuarioData = $usuariosModel->verificar_usuario($usuario);
+
+        if ($usuarioData) {
+            if (password_verify($password, $usuarioData->password)) {
+                $nombre_completo = $usuarioData->nombre . ' ' . $usuarioData->apellido_paterno . ' ' . $usuarioData->apellido_materno;
+
+                $session = session();
+                $session->remove('urbango_session'); // Limpia cualquier sesión previa
+                $sessionData = [
+                    "idusuario" => $usuarioData->id,
+                    'nombre' => $nombre_completo,
+                    'usuario' => $usuarioData->usuario,
+                ];
+
+                // Establece la sesión con el tipo de usuario "usuario"
+                $session->set('urbango_session', $sessionData);
+                $session->regenerate(); // Regenera el ID de sesión
+
+                $response = [
+                    'code' => 'is_ok',
+                    'error_message' => 'Sesión validada',
+                ];
+            } else {
+                $response = [
+                    'code' => "invalid_password",
+                    'error_message' => 'Contraseña incorrecta.',
+                ];
+            }
+        } else {
+            $response = [
+                'code' => "user_not_found",
+                'error_message' => 'El usuario no existe.',
+            ];
+        }
+
+        return $this->response->setJSON($response);
+    }
+
+
+    public function logout()
+    {
+        // Obtén la instancia de la sesión
+        $session = session();
+
+        // Borra los datos específicos de la sesión del usuario
+        $session->remove('urbango_session');
+
+        // Opcional: Destruye toda la sesión (elimina todos los datos de sesión)
+        $session->destroy();
+
+        // Redirige al usuario a la página de inicio de sesión o cualquier otra
+        return redirect()->to('/login');
+    }
+
+
 
     public function registro()
     {

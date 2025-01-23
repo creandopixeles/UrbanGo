@@ -27,10 +27,60 @@
          <li class="menu-header small text-uppercase">
              <span class="menu-header-text">Administración</span>
          </li>
+         <li class="menu-item" style="">
+             <a href="javascript:void(0)" class="menu-link menu-toggle">
+                 <i class="menu-icon tf-icons bx bx-box"></i>
+                 <div data-i18n="User interface">Usuarios</div>
+             </a>
+             <ul class="menu-sub">
+                 <li class="menu-item">
+                     <a href="ui-accordion.html" class="menu-link">
+                         <div data-i18n="Accordion">Gestión de usuarios</div>
+                     </a>
+                 </li>
+                 <li class="menu-item">
+                     <a href="ui-alerts.html" class="menu-link">
+                         <div data-i18n="Alerts">Administradores</div>
+                     </a>
+                 </li>
+                 <li class="menu-item">
+                     <a href="ui-badges.html" class="menu-link">
+                         <div data-i18n="Badges">Concecionarios</div>
+                     </a>
+                 </li>
+                 <li class="menu-item">
+                     <a href="ui-buttons.html" class="menu-link">
+                         <div data-i18n="Buttons">Choferes</div>
+                     </a>
+                 </li>
+                 <li class="menu-item">
+                     <a href="ui-carousel.html" class="menu-link">
+                         <div data-i18n="Carousel">Taquilleros</div>
+                     </a>
+                 </li>
+             </ul>
+         </li>
          <li class="menu-item">
              <a href="cards-basic.html" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-collection"></i>
-                 <div data-i18n="Basic">Usuarios</div>
+                 <div data-i18n="Basic">Unidades</div>
+             </a>
+         </li>
+         <li class="menu-item">
+             <a href="cards-basic.html" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-collection"></i>
+                 <div data-i18n="Basic">Taquillas</div>
+             </a>
+         </li>
+
+
+         <li class="menu-header small text-uppercase">
+             <span class="menu-header-text">Administracion de Bneficiarios</span>
+         </li>
+         <li class="menu-item">
+             <a href="../registros/lista" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-collection"></i>
+                 <div data-i18n="Basic">Registros</div>
              </a>
          </li>
          <li class="menu-item">
@@ -40,39 +90,30 @@
              </a>
          </li>
          <li class="menu-header small text-uppercase">
-             <span class="menu-header-text">Ventas</span>
+             <span class="menu-header-text">Viajes</span>
          </li>
          <li class="menu-item">
              <a href="cards-basic.html" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-collection"></i>
-                 <div data-i18n="Basic">Taquillas</div>
+                 <div data-i18n="Basic">Viajes registrados </div>
              </a>
-         </li>
-         <li class="menu-item">
              <a href="cards-basic.html" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-collection"></i>
-                 <div data-i18n="Basic">Abordo</div>
-             </a>
-         </li>
-         <li class="menu-header small text-uppercase">
-             <span class="menu-header-text">Anden</span>
-         </li>
-         <li class="menu-item active">
-             <a href="cards-basic.html" class="menu-link">
-                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                 <div data-i18n="Basic">Generación QR</div>
+                 <div data-i18n="Basic">Papeletas </div>
              </a>
          </li>
 
+
+
          <!-- Misc -->
-         <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
+         <li class="menu-header small text-uppercase"><span class="menu-header-text">Miscelanea</span></li>
          <li class="menu-item">
              <a
                  href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
                  target="_blank"
                  class="menu-link">
                  <i class="menu-icon tf-icons bx bx-support"></i>
-                 <div data-i18n="Support">Support</div>
+                 <div data-i18n="Support">Soporte</div>
              </a>
          </li>
          <li class="menu-item">
