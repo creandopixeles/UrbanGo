@@ -32,6 +32,18 @@ $routes->post('unidades/guardar','UnidadesController::guardar' );
 ################################################################################
 
 
+#rutas para el modulo de lugares##############################################
+$routes->get('lugares/lista', 'LugaresController::lista');
+#Peticiones AJAX
+$routes->post('lugares/guardar','LugaresController::guardar' );
+################################################################################
+
+#rutas para el modulo de andenes##############################################
+$routes->get('andenes/lista', 'AndenesController::lista');
+#Peticiones AJAX
+$routes->post('andenes/guardar','AndenesController::guardar' );
+################################################################################
+
 
 
 
