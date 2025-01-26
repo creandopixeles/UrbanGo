@@ -38,12 +38,17 @@
                                 <div class="row justify-content-end align-items-center mt-3">
                                     <form class="mb-3">
                                         <div class="row mb-3">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label for="fecha" class="form-label">Fecha</label>
                                                 <input type="date" class="form-control" id="fecha" value="<?= date('Y-m-d'); ?>" readonly required>
                                                 <div class="invalid-feedback">La fecha es obligatoria.</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
+                                                <label for="fecha" class="form-label">Hora</label>
+                                                <input type="time" class="form-control" id="hora" value="" required>
+                                                <div class="invalid-feedback">La fecha es obligatoria.</div>
+                                            </div>
+                                            <div class="col-md-4">
                                                 <label for="numero_papeleta" class="form-label">Número de papeleta</label>
                                                 <input type="text" class="form-control" id="numero_papeleta" required>
                                                 <div class="invalid-feedback">El número de papeleta es obligatorio.</div>
@@ -52,21 +57,21 @@
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <label for="unidad" class="form-label">Unidad</label>
-                                                <select class="form-select" id="unidad" required>
+                                                <select class="form-select" id="id_unidad" required>
                                                     <option value="">Selecciona una unidad</option>
-                                                    <option value="Unidad 1">Unidad 1</option>
-                                                    <option value="Unidad 2">Unidad 2</option>
-                                                    <option value="Unidad 3">Unidad 3</option>
+                                                    <option value="1">Unidad 1</option>
+                                                    <option value="2">Unidad 2</option>
+                                                    <option value="3">Unidad 3</option>
                                                 </select>
                                                 <div class="invalid-feedback">La unidad es obligatoria.</div>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="anden" class="form-label">Andén</label>
-                                                <select class="form-select" id="anden" required>
+                                                <select class="form-select" id="id_anden" required>
                                                     <option value="">Selecciona un andén</option>
-                                                    <option value="Andén 1">Andén 1</option>
-                                                    <option value="Andén 2">Andén 2</option>
-                                                    <option value="Andén 3">Andén 3</option>
+                                                    <option value="1">Andén 1</option>
+                                                    <option value="2">Andén 2</option>
+                                                    <option value="3">Andén 3</option>
                                                 </select>
                                                 <div class="invalid-feedback">El andén es obligatorio.</div>
                                             </div>
@@ -74,21 +79,21 @@
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <label for="origen" class="form-label">Origen</label>
-                                                <select class="form-select" id="origen" required>
+                                                <select class="form-select" id="id_lugar_origen" required>
                                                     <option value="">Selecciona un origen</option>
-                                                    <option value="Origen 1">Origen 1</option>
-                                                    <option value="Origen 2">Origen 2</option>
-                                                    <option value="Origen 3">Origen 3</option>
+                                                    <option value="1">Origen 1</option>
+                                                    <option value="2">Origen 2</option>
+                                                    <option value="3">Origen 3</option>
                                                 </select>
                                                 <div class="invalid-feedback">El origen es obligatorio.</div>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="destino" class="form-label">Destino</label>
-                                                <select class="form-select" id="destino" required>
+                                                <select class="form-select" id="id_lugar_destino" required>
                                                     <option value="">Selecciona un destino</option>
-                                                    <option value="Destino 1">Destino 1</option>
-                                                    <option value="Destino 2">Destino 2</option>
-                                                    <option value="Destino 3">Destino 3</option>
+                                                    <option value="1">Destino 1</option>
+                                                    <option value="2">Destino 2</option>
+                                                    <option value="3">Destino 3</option>
                                                 </select>
                                                 <div class="invalid-feedback">El destino es obligatorio.</div>
                                             </div>
@@ -96,11 +101,11 @@
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <label for="chofer" class="form-label">Chofer</label>
-                                                <select class="form-select" id="chofer" required>
+                                                <select class="form-select" id="id_chofer" required>
                                                     <option value="">Selecciona un chofer</option>
-                                                    <option value="Chofer 1">Chofer 1</option>
-                                                    <option value="Chofer 2">Chofer 2</option>
-                                                    <option value="Chofer 3">Chofer 3</option>
+                                                    <option value="1">Chofer 1</option>
+                                                    <option value="2">Chofer 2</option>
+                                                    <option value="3">Chofer 3</option>
                                                 </select>
                                                 <div class="invalid-feedback">El chofer es obligatorio.</div>
                                             </div>
@@ -108,9 +113,9 @@
                                                 <label for="color" class="form-label">Color</label>
                                                 <select class="form-select" id="color" required>
                                                     <option value="">Selecciona un color</option>
-                                                    <option value="Color 1">Color 1</option>
-                                                    <option value="Color 2">Color 2</option>
-                                                    <option value="Color 3">Color 3</option>
+                                                    <option value="1">Color 1</option>
+                                                    <option value="2">Color 2</option>
+                                                    <option value="3">Color 3</option>
                                                 </select>
                                                 <div class="invalid-feedback">El color es obligatorio.</div>
                                             </div>
@@ -191,11 +196,12 @@
                     const formData = {
                         fecha: $('#fecha').val(),
                         numero_papeleta: $('#numero_papeleta').val(),
-                        unidad: $('#unidad').val(),
-                        anden: $('#anden').val(),
-                        origen: $('#origen').val(),
-                        destino: $('#destino').val(),
-                        chofer: $('#chofer').val(),
+                        hora: $('#hora').val(),
+                        id_unidad: $('#id_unidad').val(),
+                        id_anden: $('#id_anden').val(),
+                        id_lugar_origen: $('#id_lugar_origen').val(),
+                        id_lugar_destino: $('#id_lugar_destino').val(),
+                        id_chofer: $('#id_chofer').val(),
                         color: $('#color').val()
                     };
 
