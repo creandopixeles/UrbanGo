@@ -36,7 +36,7 @@
                         <div class="card">
                             <div class="container">
                                 <div class="row justify-content-end align-items-center mt-3">
-                                    <form class="mb-3">
+                                    <div class="mb-3" id="registro_papeleta">
                                         <div class="row mb-3">
                                             <div class="col-md-4">
                                                 <label for="fecha" class="form-label">Fecha</label>
@@ -49,8 +49,8 @@
                                                 <div class="invalid-feedback">La fecha es obligatoria.</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="numero_papeleta" class="form-label">Número de papeleta</label>
-                                                <input type="text" class="form-control" id="numero_papeleta" required>
+                                                <label for="no_papeleta" class="form-label">Número de papeleta</label>
+                                                <input type="text" class="form-control" id="no_papeleta" required>
                                                 <div class="invalid-feedback">El número de papeleta es obligatorio.</div>
                                             </div>
                                         </div>
@@ -59,9 +59,9 @@
                                                 <label for="unidad" class="form-label">Unidad</label>
                                                 <select class="form-select" id="id_unidad" required>
                                                     <option value="">Selecciona una unidad</option>
-                                                    <option value="1">Unidad 1</option>
-                                                    <option value="2">Unidad 2</option>
-                                                    <option value="3">Unidad 3</option>
+                                                    <?php foreach ($unidades as $u) { ?>
+                                                        <option value="<?= $u->id; ?>">Unidad <?= $u->no_unidad; ?></option>
+                                                    <?php } ?>
                                                 </select>
                                                 <div class="invalid-feedback">La unidad es obligatoria.</div>
                                             </div>
@@ -69,9 +69,9 @@
                                                 <label for="anden" class="form-label">Andén</label>
                                                 <select class="form-select" id="id_anden" required>
                                                     <option value="">Selecciona un andén</option>
-                                                    <option value="1">Andén 1</option>
-                                                    <option value="2">Andén 2</option>
-                                                    <option value="3">Andén 3</option>
+                                                    <?php foreach ($andenes as $a) { ?>
+                                                        <option value="<?= $a->id; ?>">Unidad <?= $a->anden; ?></option>
+                                                    <?php } ?>
                                                 </select>
                                                 <div class="invalid-feedback">El andén es obligatorio.</div>
                                             </div>
@@ -81,9 +81,9 @@
                                                 <label for="origen" class="form-label">Origen</label>
                                                 <select class="form-select" id="id_lugar_origen" required>
                                                     <option value="">Selecciona un origen</option>
-                                                    <option value="1">Origen 1</option>
-                                                    <option value="2">Origen 2</option>
-                                                    <option value="3">Origen 3</option>
+                                                    <?php foreach ($lugares as $l) { ?>
+                                                        <option value="<?= $l->id; ?>"><?= $l->lugar; ?></option>
+                                                    <?php } ?>
                                                 </select>
                                                 <div class="invalid-feedback">El origen es obligatorio.</div>
                                             </div>
@@ -91,9 +91,9 @@
                                                 <label for="destino" class="form-label">Destino</label>
                                                 <select class="form-select" id="id_lugar_destino" required>
                                                     <option value="">Selecciona un destino</option>
-                                                    <option value="1">Destino 1</option>
-                                                    <option value="2">Destino 2</option>
-                                                    <option value="3">Destino 3</option>
+                                                    <?php foreach ($lugares as $l) { ?>
+                                                        <option value="<?= $l->id; ?>"><?= $l->lugar; ?></option>
+                                                    <?php } ?>
                                                 </select>
                                                 <div class="invalid-feedback">El destino es obligatorio.</div>
                                             </div>
@@ -103,9 +103,9 @@
                                                 <label for="chofer" class="form-label">Chofer</label>
                                                 <select class="form-select" id="id_chofer" required>
                                                     <option value="">Selecciona un chofer</option>
-                                                    <option value="1">Chofer 1</option>
-                                                    <option value="2">Chofer 2</option>
-                                                    <option value="3">Chofer 3</option>
+                                                    <?php foreach ($usuarios as $u) { ?>
+                                                        <option value="<?= $u->id; ?>"><?= $u->nombre . ' ' . $u->apellido_paterno . ' ' . $u->apellido_materno; ?></option>
+                                                    <?php } ?>
                                                 </select>
                                                 <div class="invalid-feedback">El chofer es obligatorio.</div>
                                             </div>
@@ -113,15 +113,20 @@
                                                 <label for="color" class="form-label">Color</label>
                                                 <select class="form-select" id="color" required>
                                                     <option value="">Selecciona un color</option>
-                                                    <option value="1">Color 1</option>
-                                                    <option value="2">Color 2</option>
-                                                    <option value="3">Color 3</option>
+                                                    <option value="Rojo">Rojo</option>
+                                                    <option value="Azul">Azul</option>
+                                                    <option value="Verde">Verde</option>
+                                                    <option value="Amarillo">Amarillo</option>
+                                                    <option value="Morado">Morado</option>
+                                                    <option value="Naranja">Naranja</option>
+                                                    <option value="Gris">Gris</option>
+
                                                 </select>
                                                 <div class="invalid-feedback">El color es obligatorio.</div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Enviar</button>
-                                    </form>
+                                        <button id="generar" class="btn btn-primary">Generar</button>
+                                    </div>
 
 
 
@@ -153,8 +158,40 @@
     <script>
         $(document).ready(function() {
 
+
+            function validarSeleccion() {
+                const origen = $("#id_lugar_origen").val();
+                const destino = $("#id_lugar_destino").val();
+
+                // Reset de clases y mensajes
+                $("#id_lugar_origen, #id_lugar_destino").removeClass("is-valid is-invalid");
+                $("#id_lugar_origen").next(".invalid-feedback").text("El origen es obligatorio.");
+                $("#id_lugar_destino").next(".invalid-feedback").text("El destino es obligatorio.");
+
+                if (origen === "" || destino === "") {
+                    // Caso de error: Origen o destino vacíos
+                    if (origen === "") {
+                        $("#id_lugar_origen").addClass("is-invalid");
+                    }
+                    if (destino === "") {
+                        $("#id_lugar_destino").addClass("is-invalid");
+                    }
+                } else if (origen === destino) {
+                    // Caso de error: Origen y destino son iguales
+                    $("#id_lugar_origen, #id_lugar_destino").addClass("is-invalid");
+                    $("#id_lugar_origen").next(".invalid-feedback").text("El origen y destino no pueden ser iguales.");
+                    $("#id_lugar_destino").next(".invalid-feedback").text("El origen y destino no pueden ser iguales.");
+                } else {
+                    // Caso válido: Valores diferentes y no vacíos
+                    $("#id_lugar_origen, #id_lugar_destino").addClass("is-valid");
+                }
+            }
+
+            // Agregar evento onblur a ambos selects
+            $("#id_lugar_origen, #id_lugar_destino").on("blur", validarSeleccion);
+
             // Validar número de papeleta para permitir solo números
-            $('#numero_papeleta').on('input', function() {
+            $('#no_papeleta').on('input', function() {
                 // Reemplazar cualquier caracter no numérico
                 this.value = this.value.replace(/[^0-9]/g, '');
             });
@@ -175,9 +212,7 @@
 
 
             // Evento submit del formulario
-            $('form').on('submit', function(e) {
-                e.preventDefault(); // Evitar envío estándar del formulario
-
+            $('#generar').on('click', function() {
                 let valid = true;
 
                 // Validar todos los campos antes de enviar
@@ -195,7 +230,7 @@
                 if (valid) {
                     const formData = {
                         fecha: $('#fecha').val(),
-                        numero_papeleta: $('#numero_papeleta').val(),
+                        no_papeleta: $('#no_papeleta').val(),
                         hora: $('#hora').val(),
                         id_unidad: $('#id_unidad').val(),
                         id_anden: $('#id_anden').val(),
@@ -206,14 +241,14 @@
                     };
 
                     $.ajax({
-                        url: 'generar', // Cambiar por la ruta a tu controlador
+                        url: 'guardar', // Cambiar por la ruta a tu controlador
                         type: 'POST',
                         data: formData,
                         dataType: 'json',
                         success: function(response) {
-                            if (response.success) {
+                            if (response.status == 'success') {
                                 alert('Formulario enviado correctamente.');
-                                $('form')[0].reset(); // Reinicia el formulario
+                                $('#registro_papeleta').find('input, select').val('');
                                 $('.form-control, .form-select').removeClass('is-valid is-invalid');
                             } else {
                                 alert('Ocurrió un error al procesar la solicitud.');

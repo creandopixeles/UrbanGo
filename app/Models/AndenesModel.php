@@ -4,15 +4,13 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UnidadesModel extends Model
+class AndenesModel extends Model
 {
-    protected $table = 'unidades'; // Nombre de la tabla en la base de datos
+    protected $table = 'andenes'; // Nombre de la tabla en la base de datos
     protected $primaryKey = 'id'; // Llave primaria de la tabla
     protected $allowedFields = [
-        'no_placas',
-        'marca',
-        'no_unidad',
-        'no_serie',
+        'anden',
+        'status'
     ]; // Campos permitidos para operaciones de inserción y actualización
     protected $useTimestamps = true; // Utilizar campos de timestamp automáticos
     protected $returnType = 'object';
@@ -44,7 +42,7 @@ class UnidadesModel extends Model
      * @param array $where Condición para filtrar usuarios.
      * @return array|null Lista de usuarios o null si no hay coincidencias.
      */
-    public function obtenerUnidadesPorWhere(array $where)
+    public function obtenerAndenesPorWhere(array $where)
     {
         return $this->where($where)->findAll();
     }

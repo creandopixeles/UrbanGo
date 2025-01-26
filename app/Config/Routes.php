@@ -20,6 +20,11 @@ $routes->post('usuarios/validar_acceso', 'UsuariosController::validar_acceso');
 $routes->post('usuarios/guardar', 'UsuariosController::guardar');
 ##################################################################################
 
+
+
+
+
+
 #rutas para el modulo de unidades##############################################
 $routes->get('unidades/lista', 'UnidadesController::lista');
 #Peticiones AJAX
@@ -79,7 +84,7 @@ $routes->get('papeletas/nueva', 'PapeletasController::nueva');
 $routes->get('papeletas/lista', 'PapeletasController::lista');
 
 #Peticiones AJAX
-$routes->post('papeletas/generar', 'PapeletasController::generar');
+$routes->post('papeletas/guardar', 'PapeletasController::guardar');
 
 ##################################################################################
 
