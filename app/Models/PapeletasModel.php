@@ -42,4 +42,48 @@ class PapeletasModel extends Model
     {
         return $this->orderBy('created_at', 'DESC')->findAll(); // Ordena por created_at en orden descendente
     }
+
+    public function obtenerPapeletas()
+    {
+        return $this->db->table('papeletas')
+            ->select('
+            papeletas.no_papeleta,
+            papeletas.fecha,
+            papeletas.hora,
+            papeletas.created_at,
+            unidades.no_unidad,
+            andenes.anden,
+            lugar_origen.lugar AS lugar_origen,
+            lugar_destino.lugar AS lugar_destino,
+            usuarios.nombre,
+            usuarios.apellido_paterno,
+            usuarios.apellido_materno,
+            papeletas.color,
+            papeletas.id,
+            papeletas.status
+        ')
+            ->join('unidades', 'papeletas.id_unidad = unidades.id')
+            ->join('andenes', 'papeletas.id_anden = andenes.id')
+            ->join('lugares AS lugar_origen', 'papeletas.id_lugar_origen = lugar_origen.id')
+            ->join('lugares AS lugar_destino', 'papeletas.id_lugar_destino = lugar_destino.id')
+            ->join('usuarios', 'papeletas.id_chofer = usuarios.id')
+            ->orderBy('papeletas.created_at', 'DESC') // Ordena por created_at descendente
+            ->get()
+            ->getResult(); // Devuelve un array de objetos
+    }
+
+    public function obtenerPapeletasPorId($id)
+    {
+        return $this->select('papeletas.no_papeleta, papeletas.fecha, papeletas.hora, papeletas.created_at, 
+                              unidades.no_unidad, andenes.anden, lugar_origen.lugar AS lugar_origen, 
+                              lugar_destino.lugar AS lugar_destino, usuarios.nombre, usuarios.apellido_paterno, 
+                              usuarios.apellido_materno, papeletas.color, papeletas.id')
+            ->join('unidades', 'papeletas.id_unidad = unidades.id')
+            ->join('andenes', 'papeletas.id_anden = andenes.id')
+            ->join('lugares AS lugar_origen', 'papeletas.id_lugar_origen = lugar_origen.id')
+            ->join('lugares AS lugar_destino', 'papeletas.id_lugar_destino = lugar_destino.id')
+            ->join('usuarios', 'papeletas.id_chofer = usuarios.id')
+            ->where('papeletas.id', $id)
+            ->first(); // Utilizamos first() para obtener solo un registro
+    }
 }

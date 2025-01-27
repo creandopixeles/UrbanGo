@@ -28,7 +28,7 @@ $routes->post('usuarios/guardar', 'UsuariosController::guardar');
 #rutas para el modulo de unidades##############################################
 $routes->get('unidades/lista', 'UnidadesController::lista');
 #Peticiones AJAX
-$routes->post('unidades/guardar','UnidadesController::guardar' );
+$routes->post('unidades/guardar', 'UnidadesController::guardar');
 ################################################################################
 
 
@@ -82,6 +82,8 @@ $routes->post('beneficiario/check-email', 'BeneficiariosController::check_email'
 #Rutas para el modulo de Papeletas ##############################################
 $routes->get('papeletas/nueva', 'PapeletasController::nueva');
 $routes->get('papeletas/lista', 'PapeletasController::lista');
+$routes->get('papeletas/impresion/(:segment)', 'PapeletasController::impresion/$1');
+
 
 #Peticiones AJAX
 $routes->post('papeletas/guardar', 'PapeletasController::guardar');

@@ -30,7 +30,7 @@
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Paletas /</span> Lista</h4>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Papeletas /</span> Lista</h4>
 
                         <!-- Basic Bootstrap Table -->
                         <div class="card">
@@ -40,13 +40,43 @@
                                         <table class="table table-sm" id="tabla_beneficiarios">
                                             <thead>
                                                 <tr>
-                                                    <th>Nombre</th>
+                                                    <th>No. de Papeleta</th>
+                                                    <th>Fecha de salida</th>
+                                                    <th>Unidad</th>
+                                                    <th>Anden</th>
+                                                    <th>Origen</th>
+                                                    <th>Deestino</th>
+                                                    <th>Chofer</th>
+                                                    <th>Color</th>
+                                                    <th>Status</th>
+
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-border-bottom-0">
-                                                <?php foreach ($registros as $r) { ?>
+                                                <?php foreach ($papeletas as $p) { ?>
                                                     <tr>
-                                                        <td><?= $r->id; ?></td>
+                                                        <th><?= $p->no_papeleta; ?></th>
+                                                        <th><?= $p->fecha . ' / ' . $p->hora; ?></th>
+                                                        <th><?= 'Unidad ' . $p->no_unidad; ?></th>
+                                                        <th><?= $p->anden; ?></th>
+                                                        <th><?= $p->lugar_origen; ?></th>
+                                                        <th><?= $p->lugar_destino; ?></th>
+                                                        <th><?= $p->nombre . ' ' . $p->apellido_paterno . ' ' . $p->apellido_materno; ?></th>
+                                                        <th><?= $p->color; ?></th>
+                                                        <th><?= $p->info_status; ?></th>
+
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <button type="button" class="btn btn-info btn-sm dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                                    Config.<i class='bx bxs-cog'></i>
+                                                                </button>
+                                                                <div class="dropdown-menu">
+                                                                    <a class="dropdown-item" href="impresion/<?= $p->id; ?>"><i class='bx bx-qr'></i> Impresión</a>
+                                                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Eliminar</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                 <?php } ?>
 
