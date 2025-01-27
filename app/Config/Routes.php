@@ -7,7 +7,9 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-
+$routes->set404Override(function () {
+    echo view('errors/error_404'); // Carga una vista personalizada para errores 404
+});
 
 #Rutas para los modulos de usuarios###############################################
 #Vista inicial para ingresar al sistema como usuario
@@ -35,13 +37,13 @@ $routes->post('unidades/guardar', 'UnidadesController::guardar');
 #rutas para el modulo de lugares##############################################
 $routes->get('lugares/lista', 'LugaresController::lista');
 #Peticiones AJAX
-$routes->post('lugares/guardar','LugaresController::guardar' );
+$routes->post('lugares/guardar', 'LugaresController::guardar');
 ################################################################################
 
 #rutas para el modulo de andenes##############################################
 $routes->get('andenes/lista', 'AndenesController::lista');
 #Peticiones AJAX
-$routes->post('andenes/guardar','AndenesController::guardar' );
+$routes->post('andenes/guardar', 'AndenesController::guardar');
 ################################################################################
 
 

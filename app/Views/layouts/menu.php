@@ -16,7 +16,7 @@
      <ul class="menu-inner py-1">
          <!-- Dashboard -->
          <li class="menu-item">
-             <a href="index.html" class="menu-link">
+             <a href="<?= base_url('dahsboard') ?>" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
                  <div data-i18n="Analytics">Dashboard</div>
              </a>
@@ -29,47 +29,53 @@
          </li>
          <li class="menu-item" style="">
              <a href="javascript:void(0)" class="menu-link menu-toggle">
-                 <i class="menu-icon tf-icons bx bx-box"></i>
+                 <i class="menu-icon tf-icons bx bx-group"></i>
                  <div data-i18n="User interface">Usuarios</div>
              </a>
              <ul class="menu-sub">
                  <li class="menu-item">
-                     <a href="ui-accordion.html" class="menu-link">
+                     <a href="<?= base_url('usuarios/lista') ?>" class="menu-link">
                          <div data-i18n="Accordion">Gestión de usuarios</div>
                      </a>
                  </li>
                  <li class="menu-item">
-                     <a href="ui-alerts.html" class="menu-link">
+                     <a href="<?= base_url('usuarios/administradores') ?>" class="menu-link">
                          <div data-i18n="Alerts">Administradores</div>
                      </a>
                  </li>
                  <li class="menu-item">
-                     <a href="ui-badges.html" class="menu-link">
+                     <a href="<?= base_url('usuarios/concecionarios') ?>" class="menu-link">
                          <div data-i18n="Badges">Concecionarios</div>
                      </a>
                  </li>
                  <li class="menu-item">
-                     <a href="ui-buttons.html" class="menu-link">
+                     <a href="<?= base_url('usuarios/choferes') ?>" class="menu-link">
                          <div data-i18n="Buttons">Choferes</div>
                      </a>
                  </li>
                  <li class="menu-item">
-                     <a href="ui-carousel.html" class="menu-link">
+                     <a href="<?= base_url('usuarios/taquilleros') ?>" class="menu-link">
                          <div data-i18n="Carousel">Taquilleros</div>
                      </a>
                  </li>
              </ul>
          </li>
          <li class="menu-item">
-             <a href="cards-basic.html" class="menu-link">
-                 <i class="menu-icon tf-icons bx bx-collection"></i>
+             <a href="<?= base_url('unidades/lista') ?>" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-bus"></i>
                  <div data-i18n="Basic">Unidades</div>
              </a>
          </li>
          <li class="menu-item">
-             <a href="cards-basic.html" class="menu-link">
-                 <i class="menu-icon tf-icons bx bx-collection"></i>
+             <a href="<?= base_url('taquillas/lista') ?>" class="menu-link">
+                 <i class="menu-icon tf-icons bx  bxs-store-alt"></i>
                  <div data-i18n="Basic">Taquillas</div>
+             </a>
+         </li>
+         <li class="menu-item">
+             <a href="<?= base_url('lugares/lista') ?>" class="menu-link">
+                 <i class="menu-icon tf-icons bx bxs-map"></i>
+                 <div data-i18n="Basic">Lugares</div>
              </a>
          </li>
 
@@ -78,14 +84,14 @@
              <span class="menu-header-text">Administracion de Bneficiarios</span>
          </li>
          <li class="menu-item">
-             <a href="../registros/lista" class="menu-link">
-                 <i class="menu-icon tf-icons bx bx-collection"></i>
+             <a href="<?= base_url('registros/lista') ?>" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-paste"></i>
                  <div data-i18n="Basic">Registros</div>
              </a>
          </li>
          <li class="menu-item">
-             <a href="cards-basic.html" class="menu-link">
-                 <i class="menu-icon tf-icons bx bx-collection"></i>
+             <a href="<?= base_url('beneficiarios/lista') ?>" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-id-card"></i>
                  <div data-i18n="Basic">Beneficiarios</div>
              </a>
          </li>
@@ -93,12 +99,12 @@
              <span class="menu-header-text">Viajes</span>
          </li>
          <li class="menu-item">
-             <a href="cards-basic.html" class="menu-link">
-                 <i class="menu-icon tf-icons bx bx-collection"></i>
+             <a href="<?= base_url('viajes/lista') ?>" class="menu-link">
+                 <i class="menu-icon tf-icons bx bxs-coupon"></i>
                  <div data-i18n="Basic">Viajes registrados </div>
              </a>
-             <a href="cards-basic.html" class="menu-link">
-                 <i class="menu-icon tf-icons bx bx-collection"></i>
+             <a href="<?= base_url('papeletas/lista') ?>" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-qr"></i>
                  <div data-i18n="Basic">Papeletas </div>
              </a>
          </li>
